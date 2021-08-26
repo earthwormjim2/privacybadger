@@ -901,7 +901,9 @@ function dispatcher(request, sender, sendResponse) {
   }
 
   case "checkLocation": {
-    if (!badger.isPrivacyBadgerEnabled(window.extractHostFromURL(sender.tab.url))) {
+    let tab_host = window.extractHostFromURL(sender.tab.url);
+
+    if (!badger.isPrivacyBadgerEnabled(tab_host)) {
       return sendResponse();
     }
 
@@ -910,8 +912,7 @@ function dispatcher(request, sender, sendResponse) {
       return sendResponse();
     }
 
-    let frame_host = window.extractHostFromURL(request.frameUrl),
-      tab_host = window.extractHostFromURL(sender.tab.url);
+    let frame_host = window.extractHostFromURL(request.frameUrl);
 
     // CNAME uncloaking
     if (badger.cnameDomains.hasOwnProperty(frame_host)) {
