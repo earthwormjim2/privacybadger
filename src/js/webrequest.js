@@ -907,11 +907,6 @@ function dispatcher(request, sender, sendResponse) {
       return sendResponse();
     }
 
-    // Ignore requests from internal Chrome tabs.
-    if (_isTabChromeInternal(sender.tab.id)) {
-      return sendResponse();
-    }
-
     let frame_host = window.extractHostFromURL(request.frameUrl);
 
     // CNAME uncloaking
