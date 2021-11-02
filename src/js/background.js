@@ -253,6 +253,20 @@ Badger.prototype = {
   tabData: {},
 
   /**
+   * Mapping of tab IDs to previous tab URLs/hostnames:
+   *
+   * recentTabUrls = {
+   *   <tab_id>: {
+   *     url: {String} top-level document URL the tab was previously on,
+   *     host: {String}
+   *   },
+   *   ...
+   * }
+   *
+   */
+  recentTabUrls: {},
+
+  /**
    * Mapping of known CNAME domain aliases
    */
   cnameDomains: {},
